@@ -11,56 +11,54 @@
 - `提問詞`:請用Javascript#寫出heap sort的演算法
 ## heap sort（Binary Search Tree, BST）
 ## Python實作
-- `提問詞`:請寫出二元搜尋樹的演算法
+- `提問詞`:請寫出heap sort的演算法
 - `Copilot的回答`:
-  - 當然可以。
-  - 以下是一個簡單的二元搜尋樹（Binary Search Tree, BST）的插入和搜尋演算法的Python代碼示例：
-```Python
-class Node:
-    def __init__(self, key):
-        self.left = None
-        self.right = None
-        self.val = key
+  - 當然可以！以下是Heap Sort的Python演算法示例：
 
-# 插入函數
-def insert(root, key):
-    if root is None:
-        return Node(key)
-    else:
-        if root.val < key:
-            root.right = insert(root.right, key)
-        else:
-            root.left = insert(root.left, key)
-    return root
+Python
 
-# 搜尋函數
-def search(root, key):
-    if root is None or root.val == key:
-        return root
-    if root.val < key:
-        return search(root.right, key)
-    return search(root.left, key)
+# -*- coding: utf-8 -*-
 
-# 使用演算法的示例
-root = None
-keys = [20, 8, 22, 4, 12, 10, 14]
+ def heapify(arr, n, i):
+   largest = i
+    l = 2 * i + 1  # left = 2*i + 1
+    r = 2 * i + 2  # right = 2*i + 2
 
-for key in keys:
-    root = insert(root, key)
+    # 如果左子節點存在且大於根節點，則更新最大值
+    if l < n and arr[i] < arr[l]:
+        largest = l
 
-# 搜尋值為10的節點
-result = search(root, 10)
-if result:
-    print("找到了值為10的節點")
-else:
-    print("沒有找到值為10的節點")
+    # 如果右子節點存在且大於根節點，則更新最大值
+    if r < n and arr[largest] < arr[r]:
+        largest = r
+
+    # 如果最大值不是根節點，則交換並繼續堆化
+    if largest != i:
+        arr[i], arr[largest] = arr[largest], arr[i]
+        heapify(arr, n, largest)
+
+def heapSort(arr):
+    n = len(arr)
+
+    # 建立最大堆
+    for i in range(n // 2, -1, -1):
+        heapify(arr, n, i)
+
+    # 一次提取元素並重新堆化
+    for i in range(n - 1, 0, -1):
+        arr[i], arr[0] = arr[0], arr[i]  # 交換
+        heapify(arr, i, 0)
+
+# 範例使用的數組
+arr = [12, 11, 13, 5, 6, 7]
+heapSort(arr)
+n = len(arr)
+
+print("排序後的數組：")
+for i in range(n):
+    print(arr[i])
 ```
-- AI 產生的代碼。請仔細檢視及使用。 深入了解常見問題集。
-- 這段代碼首先定義了一個節點類別，然後提供了插入和搜尋函數。
-- 你可以使用這些函數來建立你自己的二元搜尋樹，並在其中搜尋特定的值。
-- insert 函數會將新的鍵值插入到適當的位置以維持BST的性質，
-- 而 search 函數則用於查找是否存在某個特定的鍵值。
-- 最後的示例展示了如何使用這些函數來插入一系列的鍵值並搜尋特定的節點。
+這段程式碼實現了Heap Sort演算法，它通過建立一個二叉堆，並重複從堆中提取最大元素（在最大堆的情況下）來排序數組。Heap Sort的時間複雜度為O(n log n)，適用於大型數據集。1
 
 - Online Python Interpreter
   - [Online Python Compiler (Interpreter) - Programiz](https://www.programiz.com/python-programming/online-compiler/)
