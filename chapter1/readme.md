@@ -9,7 +9,7 @@
 - `提問詞`:請用go寫出heap sort的演算法
 - `提問詞`:請用C#寫出heap sort的演算法
 - `提問詞`:請用Javascript#寫出heap sort的演算法
-## 二元搜尋樹（Binary Search Tree, BST）
+## heap sort（Binary Search Tree, BST）
 ## Python實作
 - `提問詞`:請寫出二元搜尋樹的演算法
 - `Copilot的回答`:
