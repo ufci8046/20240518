@@ -15,12 +15,10 @@
 - `Copilot的回答`:
   - 當然可以！以下是Heap Sort的Python演算法示例：
 
-Python
-
 # -*- coding: utf-8 -*-
 
- def heapify(arr, n, i):
-   largest = i
+def heapify(arr, n, i):
+    largest = i
     l = 2 * i + 1  # left = 2*i + 1
     r = 2 * i + 2  # right = 2*i + 2
 
@@ -48,6 +46,16 @@ def heapSort(arr):
     for i in range(n - 1, 0, -1):
         arr[i], arr[0] = arr[0], arr[i]  # 交換
         heapify(arr, i, 0)
+
+# 範例使用的數組
+arr = [12, 11, 13, 5, 6, 7]
+heapSort(arr)
+n = len(arr)
+
+print("排序後的數組：")
+for i in range(n):
+    print(arr[i])
+
 
 # 範例使用的數組
 arr = [12, 11, 13, 5, 6, 7]
